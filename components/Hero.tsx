@@ -26,7 +26,7 @@ export function Hero() {
 
         <Link
           href="#pricing"
-          className="clip-corner flex min-h-11 items-center gap-2 bg-signal-ember px-6 py-3 font-display text-sm font-bold text-bg-void transition-transform hover:scale-[1.02] active:scale-[0.98]"
+          className="clip-corner flex min-h-11 items-center gap-2 bg-signal-ember px-6 py-3 font-display text-sm font-bold text-bg-void transition-transform hover:scale-[1.02] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal-ember"
         >
           Download Extra AI <HotkeyBadge keys={["⌘", "⇧", "E"]} />
         </Link>

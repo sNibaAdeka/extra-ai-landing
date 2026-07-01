@@ -23,7 +23,7 @@ export function FlowSteps() {
     <FadeInSection className="mx-auto max-w-4xl px-6 py-24 sm:px-10">
       <p className="font-mono text-sm text-cream-warm">~/the-flow</p>
       <h2 className="mt-3 font-display text-3xl font-bold text-cream-light sm:text-4xl">
-        point · describe · <em className="text-signal-ember not-italic">ship.</em>
+        point · describe · <em className="italic text-cream-light">ship.</em>
       </h2>
       <p className="mt-2 text-cream-warm">three steps. any AI coding tool you already use.</p>
 

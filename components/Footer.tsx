@@ -16,7 +16,7 @@ export function Footer() {
           <Link
             key={link.label}
             href={link.href}
-            className="font-mono text-xs text-cream-warm hover:text-cream-light"
+            className="font-mono text-xs text-cream-warm hover:text-cream-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal-ember"
           >
             {link.label}
           </Link>

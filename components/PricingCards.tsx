@@ -40,7 +40,7 @@ export function PricingCards() {
     <FadeInSection id="pricing" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
       <p className="font-mono text-sm text-cream-warm">~/pricing</p>
       <h2 className="mt-3 font-display text-3xl font-bold text-cream-light sm:text-4xl">
-        start free. <em className="text-signal-ember not-italic">upgrade when it&apos;s obvious.</em>
+        start free. <em className="italic text-cream-light">upgrade when it&apos;s obvious.</em>
       </h2>
 
       <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -69,7 +69,7 @@ export function PricingCards() {
             <Link
               href="#"
               className={cn(
-                "clip-corner mt-auto flex min-h-11 items-center justify-center px-4 py-2 text-center font-display text-sm font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]",
+                "clip-corner mt-auto flex min-h-11 items-center justify-center px-4 py-2 text-center font-display text-sm font-bold transition-transform hover:scale-[1.02] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal-ember",
                 tier.featured
                   ? "bg-signal-ember text-bg-void"
                   : "border border-grid-line text-cream-light"

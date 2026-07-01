@@ -12,7 +12,7 @@ export function GroundingShowcase() {
       <p className="font-mono text-sm text-cream-warm">~/why</p>
       <h2 className="mt-3 max-w-2xl font-display text-3xl font-bold text-cream-light sm:text-4xl">
         it doesn&apos;t just read your prompt.{" "}
-        <em className="text-signal-ember not-italic">it sees your site.</em>
+        <em className="italic text-cream-light">it sees your site.</em>
       </h2>
       <p className="mt-2 max-w-xl text-cream-warm">
         most AI tools guess from code alone. Extra AI looks at what you&apos;re actually

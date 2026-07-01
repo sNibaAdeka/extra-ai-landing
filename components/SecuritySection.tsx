@@ -24,7 +24,7 @@ export function SecuritySection() {
     <FadeInSection className="mx-auto max-w-3xl px-6 py-24 sm:px-10">
       <p className="font-mono text-sm text-cream-warm">~/security</p>
       <h2 className="mt-3 font-display text-3xl font-bold text-cream-light sm:text-4xl">
-        your secrets <em className="text-signal-ember not-italic">never</em> leave your
+        your secrets <em className="italic text-cream-light">never</em> leave your
         machine.
       </h2>
       <p className="mt-2 text-cream-warm">

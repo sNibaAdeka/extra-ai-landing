@@ -5,7 +5,7 @@ export function MemorySection() {
     <FadeInSection className="mx-auto max-w-3xl px-6 py-24 sm:px-10">
       <p className="font-mono text-sm text-cream-warm">~/memory</p>
       <h2 className="mt-3 font-display text-3xl font-bold text-cream-light sm:text-4xl">
-        it <em className="text-signal-ember not-italic">remembers</em> your project.
+        it <em className="italic text-cream-light">remembers</em> your project.
       </h2>
       <p className="mt-2 text-cream-warm">
         switch between Cursor today and Windsurf tomorrow — Extra AI still knows what you
