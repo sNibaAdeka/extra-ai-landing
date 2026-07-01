@@ -131,6 +131,10 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+:root {
+  --font-general-sans: "General Sans", sans-serif;
+}
+
 body {
   background-color: var(--color-bg-void);
   color: var(--color-cream-light);
