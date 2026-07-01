@@ -1,0 +1,52 @@
+import { Lock, ShieldCheck, PackageX } from "lucide-react";
+import { FadeInSection } from "@/components/FadeInSection";
+
+const bullets = [
+  {
+    icon: Lock,
+    title: "Local secret redaction",
+    body: "scanned and stripped before any API call",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Prompt injection defense",
+    body: "your code is treated as data, never as commands",
+  },
+  {
+    icon: PackageX,
+    title: "No backend server",
+    body: "history and project context stay on your device",
+  },
+];
+
+export function SecuritySection() {
+  return (
+    <FadeInSection className="mx-auto max-w-3xl px-6 py-24 sm:px-10">
+      <p className="font-mono text-sm text-cream-warm">~/security</p>
+      <h2 className="mt-3 font-display text-3xl font-bold text-cream-light sm:text-4xl">
+        your secrets <em className="text-signal-ember not-italic">never</em> leave your
+        machine.
+      </h2>
+      <p className="mt-2 text-cream-warm">
+        API keys, tokens, credentials — redacted locally before anything is sent for
+        analysis.
+      </p>
+
+      <ul className="mt-10 flex flex-col gap-6">
+        {bullets.map(({ icon: Icon, title, body }) => (
+          <li key={title} className="flex items-start gap-4">
+            <Icon aria-hidden className="mt-1 h-5 w-5 shrink-0 text-cream-warm" />
+            <p className="text-cream-warm">
+              <span className="font-display font-semibold text-cream-light">{title}</span>{" "}
+              — {body}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-8 font-mono text-xs text-cream-warm/80">
+        only the current request context is sent for analysis — nothing else, ever.
+      </p>
+    </FadeInSection>
+  );
+}
