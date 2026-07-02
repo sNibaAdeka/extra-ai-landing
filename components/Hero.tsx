@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { HotkeyBadge } from "@/components/HotkeyBadge";
+import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { HeroTextMatrix } from "@/components/HeroTextMatrix";
 import { ProductWindow } from "@/components/ProductWindow";
 import { CtaButton } from "@/components/CtaButton";
@@ -22,6 +23,7 @@ export function Hero() {
 
   return (
     <section className="gradient-warm bg-grid-texture relative overflow-hidden px-6 pb-28 pt-32 sm:px-10 md:pt-40">
+      <HeroBackdrop />
       <HeroTextMatrix />
       <div aria-hidden className="hero-center-scrim pointer-events-none absolute inset-0" />
       <div

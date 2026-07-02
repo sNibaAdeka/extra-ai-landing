@@ -3,21 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-
-function BracketMark() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M8 4H5v16h3M16 4h3v16h-3"
-        stroke="var(--color-cream-light)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <rect x="11" y="7" width="2" height="10" rx="1" fill="var(--color-signal-ember)" />
-    </svg>
-  );
-}
+import { Logo } from "@/components/Logo";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,10 +27,9 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
         <Link
           href="#top"
-          className="flex items-center gap-2 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal-ember"
+          className="rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal-ember"
         >
-          <BracketMark />
-          <span className="font-display text-lg font-bold text-cream-light">extra.</span>
+          <Logo markClassName="h-7 w-7" wordmarkClassName="text-lg" />
         </Link>
 
         <nav className="flex items-center gap-6">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/Logo";
 
 const links = [
   { label: "Pricing", href: "#pricing" },
@@ -10,7 +11,7 @@ const links = [
 export function Footer() {
   return (
     <footer className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-16 text-center sm:flex-row sm:justify-between sm:px-10 sm:text-left">
-      <span className="font-display text-sm font-bold text-cream-light">extra.</span>
+      <Logo markClassName="h-5 w-5" wordmarkClassName="text-sm" />
       <nav className="flex gap-6">
         {links.map((link) => (
           <Link
