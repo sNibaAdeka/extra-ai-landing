@@ -33,7 +33,7 @@ const faqs = [
 
 export function FAQAccordion() {
   return (
-    <FadeInSection className="mx-auto max-w-2xl px-6 py-24 sm:px-10">
+    <FadeInSection id="faq" className="mx-auto max-w-2xl px-6 py-24 sm:px-10">
       <p className="font-mono text-sm text-cream-warm">~/faq</p>
       <h2 className="mt-3 font-display text-3xl font-bold text-cream-light sm:text-4xl">
         questions, <em className="italic text-cream-light">answered.</em>

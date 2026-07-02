@@ -1,3 +1,4 @@
+import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { FlowSteps } from "@/components/FlowSteps";
 import { GroundingShowcase } from "@/components/GroundingShowcase";
@@ -10,16 +11,21 @@ import { Footer } from "@/components/Footer";
 
 export default function Page() {
   return (
-    <main>
-      <Hero />
-      <FlowSteps />
-      <GroundingShowcase />
-      <MemorySection />
-      <SecuritySection />
-      <PricingCards />
-      <FAQAccordion />
-      <FinalCTA />
-      <Footer />
-    </main>
+    <>
+      <span id="top" className="absolute top-0" aria-hidden />
+      <Header />
+      <main>
+        <Hero />
+        <FlowSteps />
+        <GroundingShowcase />
+        <MemorySection />
+        <SecuritySection />
+        <PricingCards />
+        <FAQAccordion />
+        <FinalCTA />
+        <Footer />
+      </main>
+      <div className="noise-overlay" aria-hidden />
+    </>
   );
 }

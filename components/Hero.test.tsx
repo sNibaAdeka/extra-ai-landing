@@ -3,11 +3,12 @@ import { render, screen } from "@testing-library/react";
 import { Hero } from "./Hero";
 
 describe("Hero", () => {
-  it("renders the exact headline with emphasis on 'fix'", () => {
+  it("renders the headline words with 'fix' emphasized", () => {
     render(<Hero />);
-    expect(screen.getByText(/stop guessing what to/i)).toBeInTheDocument();
+    expect(screen.getByText("stop")).toBeInTheDocument();
+    expect(screen.getByText("guessing")).toBeInTheDocument();
     expect(screen.getByText("fix")).toBeInTheDocument();
-    expect(screen.getByText(/next$/i)).toBeInTheDocument();
+    expect(screen.getByText("next")).toBeInTheDocument();
   });
 
   it("renders the exact subheadline", () => {
@@ -19,13 +20,19 @@ describe("Hero", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders the CTA button with hotkey badge", () => {
+  it("renders the CTA button linking to pricing", () => {
     render(<Hero />);
-    expect(screen.getByRole("link", { name: /download extra ai/i })).toBeInTheDocument();
+    const cta = screen.getByRole("link", { name: /download extra ai/i });
+    expect(cta).toHaveAttribute("href", "#pricing");
   });
 
-  it("renders the macOS badge and free-to-start note", () => {
+  it("renders the macOS free-to-start note", () => {
     render(<Hero />);
     expect(screen.getByText("macOS · free to start")).toBeInTheDocument();
+  });
+
+  it("renders the product window mock", () => {
+    render(<Hero />);
+    expect(screen.getByText("extra — analysis")).toBeInTheDocument();
   });
 });

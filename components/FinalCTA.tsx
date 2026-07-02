@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { HotkeyBadge } from "@/components/HotkeyBadge";
 import { FadeInSection } from "@/components/FadeInSection";
+import { CtaButton } from "@/components/CtaButton";
 
 export function FinalCTA() {
   return (
@@ -12,12 +11,7 @@ export function FinalCTA() {
       </h2>
       <p className="text-cream-warm">one hotkey. one look at your screen. one exact prompt.</p>
 
-      <Link
-        href="#pricing"
-        className="clip-corner flex min-h-11 items-center gap-2 bg-signal-ember px-6 py-3 font-display text-sm font-bold text-bg-void transition-transform hover:scale-[1.02] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal-ember"
-      >
-        Download Extra AI <HotkeyBadge keys={["⌘", "⇧", "E"]} />
-      </Link>
+      <CtaButton label="Download Extra AI" size="lg" />
 
       <span className="font-mono text-xs text-cream-warm/80">
         macOS · free to start · 30 second install
