@@ -1,4 +1,8 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { FadeInSection } from "@/components/FadeInSection";
+import { animations } from "@/lib/animations";
 
 const steps = [
   {
@@ -19,6 +23,8 @@ const steps = [
 ];
 
 export function FlowSteps() {
+  const reduce = useReducedMotion();
+
   return (
     <FadeInSection className="mx-auto max-w-4xl px-6 py-24 sm:px-10">
       <p className="font-mono text-sm text-cream-warm">~/the-flow</p>
@@ -27,21 +33,37 @@ export function FlowSteps() {
       </h2>
       <p className="mt-2 text-cream-warm">three steps. any AI coding tool you already use.</p>
 
-      <ol className="mt-12 flex flex-col gap-10 sm:gap-12">
+      <motion.ol
+        className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={{
+          visible: { transition: { staggerChildren: reduce ? 0 : animations.stagger80 } },
+        }}
+      >
         {steps.map((step) => (
-          <li key={step.number} className="flex items-start gap-6">
+          <motion.li
+            key={step.number}
+            className="clip-corner border border-grid-line bg-bg-mid/40 p-6 transition-colors hover:border-signal-ember/40"
+            variants={
+              reduce
+                ? undefined
+                : { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }
+            }
+            transition={{ duration: animations.durations.transition, ease: animations.easeOut }}
+            whileHover={reduce ? undefined : { y: -4 }}
+          >
             <span className="font-display text-4xl font-bold text-signal-ember sm:text-5xl">
               {step.number}
             </span>
-            <div>
-              <h3 className="font-display text-xl font-semibold text-cream-light">
-                {step.title}
-              </h3>
-              <p className="mt-1 text-cream-warm">{step.body}</p>
-            </div>
-          </li>
+            <h3 className="mt-4 font-display text-xl font-semibold text-cream-light">
+              {step.title}
+            </h3>
+            <p className="mt-1 text-cream-warm">{step.body}</p>
+          </motion.li>
         ))}
-      </ol>
+      </motion.ol>
     </FadeInSection>
   );
 }

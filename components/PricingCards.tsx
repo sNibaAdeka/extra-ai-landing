@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { FadeInSection } from "@/components/FadeInSection";
+import { animations } from "@/lib/animations";
 
 const tiers = [
   {
@@ -36,6 +40,8 @@ const tiers = [
 ];
 
 export function PricingCards() {
+  const reduce = useReducedMotion();
+
   return (
     <FadeInSection id="pricing" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
       <p className="font-mono text-sm text-cream-warm">~/pricing</p>
@@ -43,9 +49,17 @@ export function PricingCards() {
         start free. <em className="italic text-cream-light">upgrade when it&apos;s obvious.</em>
       </h2>
 
-      <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+      <motion.div
+        className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={{
+          visible: { transition: { staggerChildren: reduce ? 0 : animations.stagger80 } },
+        }}
+      >
         {tiers.map((tier) => (
-          <div
+          <motion.div
             key={tier.name}
             className={cn(
               "clip-corner flex flex-col gap-4 border p-6",
@@ -53,6 +67,13 @@ export function PricingCards() {
                 ? "border-signal-ember bg-bg-mid"
                 : "border-grid-line bg-bg-mid/60"
             )}
+            variants={
+              reduce
+                ? undefined
+                : { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }
+            }
+            transition={{ duration: animations.durations.transition, ease: animations.easeOut }}
+            whileHover={reduce ? undefined : { y: -6 }}
           >
             {tier.featured && (
               <span className="w-fit rounded-full bg-signal-ember px-2 py-0.5 font-mono text-xs font-bold text-bg-void">
@@ -77,9 +98,9 @@ export function PricingCards() {
             >
               {tier.cta}
             </Link>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       <p className="mt-6 text-center font-mono text-xs text-cream-warm/80">
         cancel anytime · no credit card for Free

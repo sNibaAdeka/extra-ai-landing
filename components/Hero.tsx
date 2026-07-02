@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { HotkeyBadge } from "@/components/HotkeyBadge";
+import { HeroTextMatrix } from "@/components/HeroTextMatrix";
 
 export function Hero() {
   return (
     <section className="gradient-warm bg-grid-texture relative overflow-hidden px-6 pb-24 pt-32 sm:px-10 md:pt-40">
+      <HeroTextMatrix />
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/3 h-[420px] w-[420px] -translate-x-1/2 animate-pulse rounded-full bg-signal-ember/20 blur-[120px]"

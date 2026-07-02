@@ -1,5 +1,9 @@
+"use client";
+
 import { Lock, ShieldCheck, PackageX } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { FadeInSection } from "@/components/FadeInSection";
+import { animations } from "@/lib/animations";
 
 const bullets = [
   {
@@ -20,6 +24,8 @@ const bullets = [
 ];
 
 export function SecuritySection() {
+  const reduce = useReducedMotion();
+
   return (
     <FadeInSection className="mx-auto max-w-3xl px-6 py-24 sm:px-10">
       <p className="font-mono text-sm text-cream-warm">~/security</p>
@@ -32,17 +38,37 @@ export function SecuritySection() {
         analysis.
       </p>
 
-      <ul className="mt-10 flex flex-col gap-6">
+      <motion.ul
+        className="mt-10 flex flex-col gap-6"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={{
+          visible: { transition: { staggerChildren: reduce ? 0 : animations.stagger40 } },
+        }}
+      >
         {bullets.map(({ icon: Icon, title, body }) => (
-          <li key={title} className="flex items-start gap-4">
-            <Icon aria-hidden className="mt-1 h-5 w-5 shrink-0 text-cream-warm" />
+          <motion.li
+            key={title}
+            className="group flex items-start gap-4"
+            variants={
+              reduce
+                ? undefined
+                : { hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }
+            }
+            transition={{ duration: animations.durations.transition, ease: animations.easeOut }}
+          >
+            <Icon
+              aria-hidden
+              className="mt-1 h-5 w-5 shrink-0 text-cream-warm transition-colors group-hover:text-signal-ember"
+            />
             <p className="text-cream-warm">
               <span className="font-display font-semibold text-cream-light">{title}</span>{" "}
               — {body}
             </p>
-          </li>
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
 
       <p className="mt-8 font-mono text-xs text-cream-warm/80">
         only the current request context is sent for analysis — nothing else, ever.

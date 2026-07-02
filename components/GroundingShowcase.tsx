@@ -26,8 +26,15 @@ export function GroundingShowcase() {
             className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-2"
             style={{ top: a.top, left: a.left }}
           >
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-signal-ember font-mono text-xs font-bold text-bg-void">
-              {a.id}
+            <span className="relative flex h-6 w-6 shrink-0 items-center justify-center">
+              <span
+                aria-hidden
+                className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal-ember/50 motion-reduce:hidden"
+                style={{ animationDelay: `${a.id * 0.4}s`, animationDuration: "2.4s" }}
+              />
+              <span className="relative flex h-6 w-6 items-center justify-center rounded-full bg-signal-ember font-mono text-xs font-bold text-bg-void">
+                {a.id}
+              </span>
             </span>
             <span className="max-w-[220px] rounded-md border border-grid-line bg-bg-void/90 px-2 py-1 font-mono text-xs text-cream-light">
               {a.label}
