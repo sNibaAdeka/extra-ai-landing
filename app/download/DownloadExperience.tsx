@@ -41,12 +41,11 @@ const platforms: Record<
   },
   windows: {
     label: "Windows",
-    detail: "64-bit · Windows 10 / 11",
-    file: "ExtraAI-Setup-1.0.0.exe",
+    detail: "64-bit · Windows 10 / 11 · beta",
+    file: "ExtraAI-1.0.0-windows-x64.zip",
     version: "v1.0.0",
-    href: "/downloads/ExtraAI-Setup-1.0.0.exe",
+    href: "/downloads/ExtraAI-1.0.0-windows-x64.zip",
     icon: Monitor,
-    comingSoon: true,
   },
 };
 
@@ -204,13 +203,11 @@ export function DownloadExperience() {
               </a>
             )}
 
-            {!active.comingSoon ? (
-              <p className="mt-4 max-w-md text-xs leading-5 text-cream-warm/55">
-                First launch on macOS: if Gatekeeper warns about an unidentified
-                developer, open System Settings → Privacy &amp; Security →
-                &ldquo;Open Anyway&rdquo;.
-              </p>
-            ) : null}
+            <p className="mt-4 max-w-md text-xs leading-5 text-cream-warm/55">
+              {selected === "macos"
+                ? "First launch on macOS: if Gatekeeper warns about an unidentified developer, open System Settings → Privacy & Security → “Open Anyway”."
+                : "Unzip the archive and run extra_ai.exe. If SmartScreen warns about an unknown publisher, click “More info” → “Run anyway”."}
+            </p>
 
             <p className="mt-5 max-w-md text-sm leading-6 text-cream-warm/70">
               By downloading you agree to our{" "}
