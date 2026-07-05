@@ -35,6 +35,10 @@ describe("DownloadPage", () => {
 
     expect(screen.getByRole("link", { name: /download for windows/i })).toHaveAttribute(
       "href",
+      "/downloads/ExtraAI-Setup-1.0.0.exe"
+    );
+    expect(screen.getByRole("link", { name: /portable zip/i })).toHaveAttribute(
+      "href",
       "/downloads/ExtraAI-1.0.0-windows-x64.zip"
     );
   });
