@@ -8,6 +8,6 @@ describe("Header", () => {
     expect(screen.getByText("extra.")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Pricing" })).toHaveAttribute("href", "#pricing");
     expect(screen.getByRole("link", { name: "FAQ" })).toHaveAttribute("href", "#faq");
-    expect(screen.getByRole("link", { name: "Download" })).toHaveAttribute("href", "#pricing");
+    expect(screen.getByRole("link", { name: "Download" })).toHaveAttribute("href", "/download");
   });
 });

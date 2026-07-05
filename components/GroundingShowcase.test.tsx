@@ -6,20 +6,20 @@ describe("GroundingShowcase", () => {
   it("renders eyebrow, title, and subtitle", () => {
     render(<GroundingShowcase />);
     expect(screen.getByText("~/why")).toBeInTheDocument();
-    expect(screen.getByText("it sees your site.")).toBeInTheDocument();
+    expect(screen.getByText("get the fix.")).toBeInTheDocument();
   });
 
   it("renders all three numbered annotations", () => {
     render(<GroundingShowcase />);
-    expect(screen.getByText(/spacing inconsistent/i)).toBeInTheDocument();
-    expect(screen.getByText(/contrast 3\.8:1/i)).toBeInTheDocument();
-    expect(screen.getByText(/no mobile breakpoint below 768px/i)).toBeInTheDocument();
+    expect(screen.getByText(/uneven spacing/i)).toBeInTheDocument();
+    expect(screen.getByText(/hard to read/i)).toBeInTheDocument();
+    expect(screen.getByText(/mobile version/i)).toBeInTheDocument();
   });
 
   it("renders the grounding caption", () => {
     render(<GroundingShowcase />);
     expect(
-      screen.getByText(/grounded in your real screenshot and your real code/i)
+      screen.getByText(/grounded in your real screenshot and real code/i)
     ).toBeInTheDocument();
   });
 });

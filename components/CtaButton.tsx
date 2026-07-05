@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
  * lifts slightly; press dips it.
  */
 export function CtaButton({
-  href = "#pricing",
+  href = "/download",
   label,
   size = "md",
   className,
@@ -40,7 +40,7 @@ export function CtaButton({
         )}
       >
         {label}
-        <span className="flex items-center gap-1 rounded-md bg-bg-void/80 px-2 py-1 font-mono text-xs text-cream-light">
+        <span className="extra-glow-filter flex items-center gap-1 rounded-md bg-bg-void/80 px-2 py-1 font-mono text-xs text-cream-light">
           <span>⌘</span>
           <span>⇧</span>
           <span>E</span>

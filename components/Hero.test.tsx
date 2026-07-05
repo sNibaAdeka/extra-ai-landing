@@ -3,36 +3,40 @@ import { render, screen } from "@testing-library/react";
 import { Hero } from "./Hero";
 
 describe("Hero", () => {
-  it("renders the headline words with 'fix' emphasized", () => {
+  it("renders the PixelHero brand headline", () => {
     render(<Hero />);
-    expect(screen.getByText("stop")).toBeInTheDocument();
-    expect(screen.getByText("guessing")).toBeInTheDocument();
-    expect(screen.getByText("fix")).toBeInTheDocument();
-    expect(screen.getByText("next")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /extra ai\./i })).toBeInTheDocument();
   });
 
-  it("renders the exact subheadline", () => {
+  it("renders the short adapted subheadline", () => {
     render(<Hero />);
     expect(
       screen.getByText(
-        /Extra AI looks at your site and your code at the same time/i
+        /Turn rough website feedback into precise, code-aware prompts/i
       )
     ).toBeInTheDocument();
   });
 
-  it("renders the CTA button linking to pricing", () => {
+  it("renders real CTA links", () => {
     render(<Hero />);
-    const cta = screen.getByRole("link", { name: /download extra ai/i });
-    expect(cta).toHaveAttribute("href", "#pricing");
+    expect(screen.getByRole("link", { name: /download extra ai/i })).toHaveAttribute(
+      "href",
+      "/download"
+    );
+    expect(screen.getByRole("link", { name: /see how it works/i })).toHaveAttribute(
+      "href",
+      "#the-flow"
+    );
   });
 
-  it("renders the macOS free-to-start note", () => {
+  it("renders the honest stack marquee label", () => {
     render(<Hero />);
-    expect(screen.getByText("macOS · free to start")).toBeInTheDocument();
+    expect(screen.getByText("Works with your existing stack")).toBeInTheDocument();
+    expect(screen.getAllByText("React").length).toBeGreaterThan(0);
   });
 
-  it("renders the product window mock", () => {
-    render(<Hero />);
-    expect(screen.getByText("extra — analysis")).toBeInTheDocument();
+  it("renders a decorative canvas background", () => {
+    const { container } = render(<Hero />);
+    expect(container.querySelector("canvas")).toBeInTheDocument();
   });
 });

@@ -8,7 +8,7 @@ describe("PricingCards", () => {
     expect(screen.getByText("~/pricing")).toBeInTheDocument();
   });
 
-  it("renders all three tiers with prices", () => {
+  it("renders all four tiers with prices", () => {
     render(<PricingCards />);
     expect(screen.getByText("FREE")).toBeInTheDocument();
     expect(screen.getByText("$0")).toBeInTheDocument();
@@ -16,6 +16,8 @@ describe("PricingCards", () => {
     expect(screen.getByText("$9/mo")).toBeInTheDocument();
     expect(screen.getByText("STUDIO")).toBeInTheDocument();
     expect(screen.getByText("$29/mo")).toBeInTheDocument();
+    expect(screen.getByText("TEAM")).toBeInTheDocument();
+    expect(screen.getByText("$79/mo")).toBeInTheDocument();
   });
 
   it("marks only Pro as Most popular", () => {
@@ -29,10 +31,12 @@ describe("PricingCards", () => {
     expect(screen.getByRole("link", { name: /download — free/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /start pro/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /start studio/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /talk to us/i })).toBeInTheDocument();
   });
 
   it("renders the fine print", () => {
     render(<PricingCards />);
     expect(screen.getByText(/cancel anytime · no credit card for free/i)).toBeInTheDocument();
+    expect(screen.getByText(/windows next/i)).toBeInTheDocument();
   });
 });

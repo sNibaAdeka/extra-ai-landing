@@ -1,12 +1,13 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FadeInSection } from "@/components/FadeInSection";
+import { StoryPanel } from "@/components/StoryPanel";
 
 const faqs = [
   {
@@ -33,15 +34,24 @@ const faqs = [
 
 export function FAQAccordion() {
   return (
-    <FadeInSection id="faq" className="mx-auto max-w-2xl px-6 py-24 sm:px-10">
-      <p className="font-mono text-sm text-cream-warm">~/faq</p>
-      <h2 className="mt-3 font-display text-3xl font-bold text-cream-light sm:text-4xl">
-        questions, <em className="italic text-cream-light">answered.</em>
-      </h2>
-
-      <Accordion className="mt-10">
-        {faqs.map((faq) => (
-          <AccordionItem key={faq.q} value={faq.q} className="border-grid-line">
+    <StoryPanel
+      id="faq"
+      eyebrow="~/faq"
+      title={
+        <>
+          questions, <em className="story-accent">answered.</em>
+        </>
+      }
+      bodyClassName="mx-auto max-w-3xl"
+    >
+      <Accordion className="story-demo-tile rounded-lg px-4 sm:px-6">
+        {faqs.map((faq, index) => (
+          <AccordionItem
+            key={faq.q}
+            value={faq.q}
+            className="faq-item-appear border-cream-light/10"
+            style={{ animationDelay: `${index * 70}ms` } as CSSProperties}
+          >
             <AccordionTrigger className="text-left font-display text-cream-light">
               {faq.q}
             </AccordionTrigger>
@@ -49,6 +59,6 @@ export function FAQAccordion() {
           </AccordionItem>
         ))}
       </Accordion>
-    </FadeInSection>
+    </StoryPanel>
   );
 }

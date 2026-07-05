@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { FadeInSection } from "@/components/FadeInSection";
+import { ClipboardCheck } from "lucide-react";
+import { StoryPanel } from "@/components/StoryPanel";
 import { animations } from "@/lib/animations";
 
 const steps = [
@@ -26,15 +27,18 @@ export function FlowSteps() {
   const reduce = useReducedMotion();
 
   return (
-    <FadeInSection className="mx-auto max-w-4xl px-6 py-24 sm:px-10">
-      <p className="font-mono text-sm text-cream-warm">~/the-flow</p>
-      <h2 className="mt-3 font-display text-3xl font-bold text-cream-light sm:text-4xl">
-        point · describe · <em className="italic text-cream-light">ship.</em>
-      </h2>
-      <p className="mt-2 text-cream-warm">three steps. any AI coding tool you already use.</p>
-
+    <StoryPanel
+      id="the-flow"
+      eyebrow="~/the-flow"
+      title={
+        <>
+          point · describe · <em className="story-accent">ship.</em>
+        </>
+      }
+      description="three steps. any AI coding tool you already use."
+    >
       <motion.ol
-        className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3"
+        className="grid grid-cols-1 gap-5 lg:grid-cols-3"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -45,25 +49,60 @@ export function FlowSteps() {
         {steps.map((step) => (
           <motion.li
             key={step.number}
-            className="clip-corner border border-grid-line bg-bg-mid/40 p-6 transition-colors hover:border-signal-ember/40"
+            className="story-demo-tile group rounded-lg p-5 transition duration-200"
             variants={
               reduce
                 ? undefined
-                : { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }
+                : { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0 } }
             }
             transition={{ duration: animations.durations.transition, ease: animations.easeOut }}
             whileHover={reduce ? undefined : { y: -4 }}
           >
-            <span className="font-display text-4xl font-bold text-signal-ember sm:text-5xl">
-              {step.number}
-            </span>
-            <h3 className="mt-4 font-display text-xl font-semibold text-cream-light">
+            <span className="font-mono text-sm font-bold text-signal-ember">{step.number}</span>
+            <div className="mt-5 flex min-h-40 items-center justify-center rounded-md border border-cream-light/8 bg-bg-void/62 p-5">
+              {step.number === "01" ? (
+                <div className="flex items-center gap-2">
+                  {["⌘", "⇧", "E"].map((key) => (
+                    <span
+                      key={key}
+                      className="extra-glow-filter rounded-md border border-cream-light/10 bg-cream-light/8 px-3 py-2 font-mono text-sm font-bold text-cream-light shadow-[0_0_30px_rgba(255,107,53,0.12)]"
+                    >
+                      {key}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+              {step.number === "02" ? (
+                <div className="story-selection-demo relative h-28 w-full max-w-[230px]">
+                  <span className="story-selection-box" />
+                  <span className="story-selection-fill" />
+                  <span className="story-selection-cursor" />
+                </div>
+              ) : null}
+              {step.number === "03" ? (
+                <div className="story-prompt-demo w-full max-w-[240px] font-mono text-sm text-cream-light">
+                  <div className="mb-4 flex items-center gap-2 text-[11px] text-cream-warm/78">
+                    <span className="story-prompt-icon">
+                      <ClipboardCheck aria-hidden className="size-3.5" />
+                    </span>
+                    <span>prompt ready</span>
+                  </div>
+                  <div className="space-y-3" aria-hidden="true">
+                    <span className="story-prompt-line story-prompt-line-long" />
+                    <span className="story-prompt-line story-prompt-line-mid" />
+                    <span className="story-prompt-line story-prompt-line-short" />
+                    <span className="story-prompt-caret" />
+                  </div>
+                </div>
+              ) : null}
+            </div>
+            <h3 className="mt-5 font-display text-xl font-semibold text-cream-light">
               {step.title}
             </h3>
-            <p className="mt-1 text-cream-warm">{step.body}</p>
+            <p className="mt-2 text-sm leading-6 text-cream-warm/82">{step.body}</p>
           </motion.li>
         ))}
       </motion.ol>
-    </FadeInSection>
+    </StoryPanel>
   );
 }

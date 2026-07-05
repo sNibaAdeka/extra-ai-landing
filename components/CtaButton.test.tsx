@@ -17,8 +17,8 @@ describe("CtaButton", () => {
     expect(screen.getByText("E")).toBeInTheDocument();
   });
 
-  it("defaults its href to the pricing anchor", () => {
+  it("defaults its href to the download page", () => {
     render(<CtaButton label="Get it" />);
-    expect(screen.getByRole("link", { name: /get it/i })).toHaveAttribute("href", "#pricing");
+    expect(screen.getByRole("link", { name: /get it/i })).toHaveAttribute("href", "/download");
   });
 });

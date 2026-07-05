@@ -1,21 +1,35 @@
-import { FadeInSection } from "@/components/FadeInSection";
 import { CtaButton } from "@/components/CtaButton";
+import { StoryPanel } from "@/components/StoryPanel";
 
 export function FinalCTA() {
   return (
-    <FadeInSection className="gradient-warm bg-grid-texture mx-6 flex flex-col items-center gap-6 px-6 py-24 text-center sm:mx-10 sm:px-10">
-      <p className="font-mono text-sm text-cream-warm">~/⌘⇧e</p>
-      <h2 className="max-w-xl font-display text-3xl font-bold text-cream-light sm:text-4xl">
-        stop starting from <em className="italic text-cream-light">zero</em> on every
-        prompt.
-      </h2>
-      <p className="text-cream-warm">one hotkey. one look at your screen. one exact prompt.</p>
-
+    <StoryPanel
+      eyebrow="~/⌘⇧e"
+      title={
+        <>
+          stop starting from <em className="story-accent">zero</em> on every prompt.
+        </>
+      }
+      description="one hotkey. one look at your screen. one exact prompt."
+      bodyClassName="flex flex-col items-center gap-6"
+    >
+      <div className="flex h-16 items-center gap-1" aria-hidden>
+        {Array.from({ length: 19 }, (_, i) => (
+          <span
+            key={i}
+            className="extra-glow-filter story-wave-bar w-1.5 rounded-full bg-signal-ember"
+            style={{
+              height: `${18 + Math.sin(i * 0.8) * 10 + (i % 5) * 4}px`,
+              animationDelay: `${i * 0.045}s`,
+            }}
+          />
+        ))}
+      </div>
       <CtaButton label="Download Extra AI" size="lg" />
 
       <span className="font-mono text-xs text-cream-warm/80">
         macOS · free to start · 30 second install
       </span>
-    </FadeInSection>
+    </StoryPanel>
   );
 }
